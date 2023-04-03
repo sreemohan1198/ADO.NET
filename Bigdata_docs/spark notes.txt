@@ -1,0 +1,28 @@
+-->How to store spark transformations and actions to amazon EMR ?
+
+To store Spark transformations and actions to Amazon EMR, you can follow these steps:
+
+Launch an Amazon EMR cluster: First, you need to launch an Amazon EMR cluster. 
+You can do this using the AWS Management Console or the AWS Command Line Interface (CLI).
+
+Install Spark: Once the cluster is launched, you need to install Spark on the cluster. 
+You can use the bootstrap action provided by Amazon EMR to install Spark.
+
+Write your Spark code: Write your Spark code using transformations and actions.
+
+Package your code: Package your Spark code into a JAR file using a build tool like Maven or SBT.
+
+Upload your code: Upload your JAR file to an S3 bucket.
+
+Submit your Spark job: Submit your Spark job to the Amazon EMR cluster using the spark-submit command.
+ Make sure to specify the path to your JAR file and any other required parameters.
+
+Monitor your job: Monitor the progress of your job using the Amazon EMR console or the AWS CLI.
+
+Retrieve your results: Once your job is complete, retrieve the results from the output location specified in your Spark code.
+
+Overall, storing Spark transformations and actions to Amazon EMR involves launching a cluster, installing Spark, writing and packaging your code, 
+uploading it to S3, submitting your job, monitoring progress, and retrieving your results.
+
+
+-->

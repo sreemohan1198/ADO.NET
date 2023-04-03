@@ -1,0 +1,35 @@
+AWS:
+
+Data is ingested into kinesis
+shards (pipelines) from
+producers at 1 mb/s per shard
+
+same data is streamed to the consumer
+instances after processing or 
+without processing at max of 2 mb/s per shard
+
+the instances have the option of storing
+
+
+Shard split-splitting into two
+shard merge-merging two shards
+
+Why AWS KInesis ?
+-
+
+cloud-Based :
+Divide and conquer :
+FAst :
+Managed :
+Scalable : 
+
+Features of KInesis :
+------------------------
+ Producer-kinesis streaming area-consumer
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+what is rdd and why do use rdd ?
+how to create and use rdd?
+what is dataframe and why do we use it?
+how to create df?
+
+what is a function and why do we use it ?where do we use
+what is stored procedure and why do we use it? wgere do we use it?
+differenece between sp and fun in sql?
+
+--------------------------------------
+RDD – RDD is a distributed collection of data elements spread across many machines in the cluster.
+RDDs are a set of Java or Scala objects representing data.
+
+DataFrame – A DataFrame is a distributed collection of data organized into named columns.
+It is conceptually equal to a table in a relational database.
+
+--------------------------------
+
+RDD in spark: Resilient Distributed Datasets
+ it is read only partition collection of records
+it is a fundamental data structure of spark
+it allows a programmer to perform in memory computations on large clusters in a fault tolerant manner.
+to speed up the task
+
+Dataframe in spark:
+ in dataframe data organized into named columns
+----------------------------------------------------------------------------------
+
+What is RDD and why do we need it?
+
+An RDD is an immutable distributed collection of datasets partitioned across a 
+set of nodes of the cluster that can be recovered if a partition is lost, thus 
+providing fault tolerance. It also provides in-built memory computing and 
+referencing datasets stored in external storage systems.
+
+-------------------------------------------------------------------------------------
+
+What is RDD and how does it work?
+
+They are a distributed collection of objects, which are stored in memory or on disks of 
+different machines of a cluster. 
+A single RDD can be divided into multiple logical partitions so that these partitions 
+can be stored and processed on different machines of a cluster.
+
+----------------------------------------------------------------------------------------
+
+RDD (Resilient Distributed Dataset) is a basic data structure used in Spark to execute the 
+MapReduce operations faster and efficiently.
+
+Data sharing in MapReduce take a lot of time because of replication, serialization, and disk IO. 
+Hadoop applications take over 90 percent of the time in read-write operations. 
+So, researchers came up with this RDD concept that uses in-memory processing computation.
+Using RDDs increased the data sharing in memory by 10 to 100 times faster than network and disk.
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

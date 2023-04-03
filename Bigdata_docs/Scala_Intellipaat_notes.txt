@@ -1,0 +1,202 @@
+SPARK:
+
+execution engine     code
+
+Mapreduce			java
+spark				scala
+
+Scala:
+-scala wass introduced in 2004
+-spark is written in scala
+-scala was first prog lang which started supporting both object oriented and 
+ functional programming styles.
+
+java : platform independent,performance optimizes etc...,
+     <very difficult to master
+
+python : very easy to master <lacks performance>
+
+scala : scala programs are easy to write,
+	    scala programs are compiled to run on a JVM.
+
+----------------------
+Dynamic type interface - data types are automatically inferred by scala
+
+scala>2
+res0: Int=2
+
+Scala supports two types of variables
+
+1.Immutable : cannot change -Val
+	scala>val a=200
+	a:Int=100
+
+2.Mutable : can change but shld be same datatype - var
+	scala>var b=100
+	b: int=100
+	
+    scala>var b=10
+	b: int=10
+
+scala>val z:int=1000
+z:int=1000
+
+
+Instructions VS Expressions: 
+
+create a code block then the last expression will be cal automatically and display that output
+for the given variable
+
+anything we declare on scala in expression.
+
+
+to check previous commands: scala> :history
+
+----intellij IDEA to run scala on local system[version 2021.2.1]
+
+
+
+What is a static class ?
+
+public static void main
+In scala we have singleton object.
+
+
+
+Functional programming:
+-------------------------
+
+1.Immutability
+ 
+//traditional
+a=10
+a=a++
+a=a+1
+
+//Functional
+
+a=10
+b=a+1
+
+2.Cociseness
+
+writing the program using less num of lines of codes
+
+3.Functions as first class citizens
+
+
+
+
+----------------------------------
+1/11/2023
+
+Different types of functions
+1.higher order functions : map()
+2.Anonymous functions : 
+
+
+--------------------------------
+
+
+1/12/2023
+
+
+SPARK :
+-------
+-Bigdata processing engine
+-It is a unified engine for large scale data analytics
+-spark will do batch processing 
+-spark requires a map cluster like yarn or hdfs
+
+-RDD[Resilient Distributed Dtaset] is used to represent data in spark
+  	 Rdd is a list but distributed[rdd is a data structure]
+	-Resilient means Fault tolerant
+	
+	RDD [immutable and Lazy evaluation]
+	-Transformation [built in fun in spark]
+	-Actions
+
+Lazy evaluation means all the transformations in spark are lazy
+it will take some time to execute/run a program
+we have to call action toperform the spark some job
+
+c.collect - is an action which tells spark to show something inside the RDD
+
+
+-How do we represent sales.csv file in spark ?
+
+	a=sc.textFile("Sales.csv")
+	b=a.map(some_logic) - map transformation
+	c=b.groupby(logic) - transformations
+	c.collect
+
+
+-Directed Acyclic Graph (DAG) 
+	a(map)-b(group)-c
+
+------------------------------------------
+
+1/16/2023
+
+
+
+To start spark-spark-shell
+To exit scala shell---:q
+Interative shell for python-pyspark
+
+-After launching spark shell you will get a local mode and ip address or your spark browser
+open that ip in the google and you can see the spark jobs over there
+
+-local mode -spark is running on single machine and singlejvm
+
+#Create an RDD in spark shell
+
+convert an array into rdd
+
+
+-to check how many partitions rdd has
+book.getNumPartitions   o/p: Int=
+
+-Manually we can add how many partiitons we want to get
+val book=sc.textFile("/home/hadoop/book.txt",4)
+book.getNumPartitions  o/p:4
+
+
+
+#Wordcount program:
+
+-How many time each word is repeating in the file
+
+book.first   :it will show the first element of rdd
+
+-split each line into words[create new rdd and apply tranformation on existing rdd]
+
+	val a = book.map(i => i.split(" "))
+
+--->Map is a higher order transformation and its jst like for loop in rdd
+It will read every line in the book and split into words
+
+	a.collect
+
+   val a = book.flatMap (i => i.split(" "))   -it will remove the array stured output
+
+	a.collect
+
+
+
+
+-reducebykey is a transformation we call this only when output in key value pair
+val c = b.reduceByKey((x,y) => (x+y))
+c.collect
+
+
+
+
+-DAG: its like a flow chart in spark
+we can see the different tasks we are running 
+-what is a  stage in DAG ?
+	
+
+
+NARROW TRANSFORMATION: executes independently each partitions [map/filter/flatmap]
+WIDE TRANSFORMATIONS: which req a shuffle process ie..sending data from one partition to other[reduceByKey]

@@ -1,0 +1,184 @@
+BIGDATA:
+
+Volume-huge amt of data which we cannot store on single machine
+
+Variety-diff kinds of data
+	structured-rdbms tables
+	unstructures-images,videos,log files
+	semi structured-xml,json,etc..,
+Velocity-refers to the speed at which new data is coming in
+	eg:flipkart bigbillion days
+
+Veracity-data is not clear
+
+
+WHY BIGDATA ?
+
+What are the req to design a good bigdata system
+1.storage
+2.Process
+3.Scalability
+
+	-To store huge amt of data which your traditional
+system are not capable of doing.
+	-Process huge amt of data which your
+traditional systems were not capable of doing.
+	-Scalability(your bigdata system shld be scalable)
+
+Two ways to build a system
+1.Monolithic : one powerful system with lot of resources
+2.Distributed: many smaller system(node) come together(cluster).
+
+RESOURCES
+--------------
+3 things
+
+1.CPU(cores)		 - compute
+2.RAM(8gb/6/4) 	 - memory
+3.hard disk(1Tb )  - storage
+
+Monolithic							Distributes system
+------------							--------------------
+64gb ram								4 node cluster 
+5 tb hard disk								performance is y
+16 cores								to douoble the performance you need to double the no of nodes
+
+resources  performance
+x			y
+x			2y
+-----------------
+2x <			2y
+
+
+-In monolithic when we keep on adding resources to same machine this is known as
+vertical scaling which is not true scaling.
+
+-In distributed we get horizontal scaling and this is true scaling
+
+
+
+WHAT is HADOOP: [Apache Hadoop]
+
+-It is a framework to solve bigdata problems
+-supports the storage and processing of
+ extremely large data sets in a distributed computing environment
+
+Hadoop Ecolution:
+-google realized that they need a distributed architecture
+to tackle their web search requirements
+ 
+IN 2003 -distributed storage -GFS(google file system)
+   2004 -distributed processing -Mapreduce
+
+
+YAHOO-2006 yahoo took those papers and implemented 
+ dough cutting
+
+GFS - by using this paper yahoo implemented HDFS(hadoop distributed file system)
+ 
+Mapreduce-implemented mapreduce
+
+
+HDFS & Mapreduce forms the core components of hadoop in first version
+
+1.HDFS - Distributed Storage
+2.Mapreduce - Distributed Process
+
+2009-hadoop came under apache software foundation and  made open source
+
+2013-apache released hadoop2.0 to provide major performance enhancements
+
+
+HADoop 2.0 [mapreduce+yarn+hdfs]
+-----------------
+HDFS 	 Mapreduce
+----------------------
+HDFS		Mapreduce & YARN(Yet Another Resource Negotiator)
+					
+YARN -	resource management [its like a os in distributed sytsem
+
+
+HADOOP ECOSYSTEM
+--------------------------
+HIVE :Hive is a Datawarehouse tool built on top of apache hadoop for providing data query and analysis
+ 	  we will write sql query and hive converts to mapreduce and performs tasks
+      [for quick processing we use hive]
+
+PIG : A scripting lang for data manipulation.
+	clean data and convert it from unstructured data to structured data.
+
+SQOOP :A cmd line interface application for transferring data between relational databases and hadoop
+
+HBASE : A column oriented NOSQL database that runs on top of hdfs.
+		[for quick search we use hbse]
+
+OOZIE : A workflow scheduler sys to manage apache hadoop jobs
+
+SPARK : A distributed general purpose in-memory compute engine.
+
+
+
+Processing     Searching
+---------------------------------
+1				
+2
+3
+4
+5
+6
+.
+.
+.
+.
+100000
+
+sum of salaries of all employees --processing
+
+
+HADOOP CLUSTER:
+
+HDFS			Mapreduce			YARN
+ |				|				 |
+Storage 		compute engine		Resource manager
+ unit
+
+APACHE SPARK:
+---------------
+Is a general purpose
+in memory
+compute engine
+
+-We can replace mapreduce with spark in hadoop cluster
+-Spark is a plug and play compute engine
+-plug it with any storage[local/hdfs/amazon s3]
+-plug it with a y resource manager[yarn/mesos/kubernetes]
+
+
+SPARK CLUSTER:
+-------------------
+compute - spark
+Storage - local/hdfs/amazon s3
+Resource anager - yarn/mesos/kubernetes
+
+Currently Industrytrend:
+--------------------------
+Compute - Spark
+Storage - HDFS
+Resource Manager - Yarn
+
+IN which language we need to write spark coe?
+
+-Scala [is the top choice]
+-Python
+-Java
+
+
+
+
+
+
+
+
+
+
+

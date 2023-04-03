@@ -1,0 +1,50 @@
+SQL is a programming language designed to manipulate and manage data stored in relational databases.
+
+A relational database is a database that organizes information into one or more tables.
+A table is a collection of data organized into rows and columns.
+A statement is a string of characters that the database recognizes as a valid command.
+
+CREATE TABLE creates a new table.
+INSERT INTO adds a new row to a table.
+SELECT queries data from a table.
+ALTER TABLE changes an existing table.
+UPDATE edits a row in a table.
+DELETE FROM deletes rows from a table.
+Constraints add information about how a column can be used.
+
+AS is a keyword in SQL that allows you to rename a column or table using an alias. The new name can be anything you want as long as you put it inside of single quotes. Here we renamed the name column as Titles.
+
+DISTINCT is used to return unique values in the output. It filters out all duplicate values in the specified column(s).
+
+We can restrict our query results using the WHERE clause in order to obtain only the information we want.
+Comparison operators used with the WHERE clause are:
+
+= equal to
+!= not equal to
+> greater than
+< less than
+>= greater than or equal to
+<= less than or equal to
+
+
+LIKE can be a useful operator when you want to compare similar values.
+SELECT * 
+FROM movies
+WHERE name LIKE 'Se_en';
+The _ means you can substitute any individual character here without breaking the pattern. The names Seven and Se7en both match this pattern.
+
+
+The percentage sign % is another wildcard character that can be used with LIKE.
+SELECT * 
+FROM movies
+WHERE name LIKE 'A%';
+
+% is a wildcard character that matches zero or more missing letters in the pattern. For example:
+
+A% matches all movies with names that begin with letter ‘A’
+%a matches all movies that end with ‘a’
+We can also use % both before and after a pattern:
+
+
+
+The BETWEEN operator is used in a WHERE clause to filter the result set within a certain range. It accepts two values that are either numbers, text or dates.

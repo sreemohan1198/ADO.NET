@@ -1,0 +1,60 @@
+Bitbucket is a repository mgt tool
+that is specially built for expert teams and professionals
+
+Uses of Bitbucket are access control,
+workflow control, pull request, and integration for full rest API.
+
+GitHub revolves around public code, while Bitbucket is designed mainly
+ for private projects
+
+
+
+hive jst for query
+sql - tool lo query
+db lo store
+
+hadoop--hive--tool--query---separate db n
+hive query xl-redad--storage hbase---this file to hbade
+hdfs file sys store
+
+---hive  :
+---hdfs  :
+---hbase :
+---sql   :
+---spark :
+
+enti?
+em chestham?
+deniki use chestham?
+
+table create?
+
+
+
+----------------
+
+https://public.tableau.com/app/profile/sridevi5217 
+
+
+------------------------
+tableau datasts
+
+https://public.tableau.com/app/resources/sample-data?qt-overview_resources=1#qt-overview_resources
+
+
+
+
+https://drive.google.com/file/d/1BzPFG0_vdLtF_bpApo9cssMKliqAyqQe/view?pli=1
+
+
+spark:
+https://drive.google.com/drive/folders/14om_1Xfo5kILDdlPeAbBHvLy5kmo9iNf
+
+hive:
+https://drive.google.com/drive/folders/1-EzUGJe8b_Lu1Qj1ZgW7--82XXS1cwpn
+
+hadoop:
+https://drive.google.com/drive/folders/18MRNk6EJHfjGyyyWadKJXYWFTBoM54T2
+
+hadoop notes:
+https://docs.google.com/document/d/15lfIy0x5fM_IS7RcZprzLjN5dgwWxR7ip5uUo_-pnQI/edit

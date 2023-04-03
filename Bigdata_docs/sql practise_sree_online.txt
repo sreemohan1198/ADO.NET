@@ -1,0 +1,304 @@
+-Select firstname of the patient from table that start with letter c
+
+SELECT first_name FROM patients
+WHERE first_name LIKE 'c%';
+
+-Show first name and last name of patients
+ that weight within the range of 100 to 120 (inclusive)
+
+select first_name,last_name from patients
+where weight between 100 and 120;
+
+-Update the patients table for the allergies 
+column. If the patient's allergies is null 
+then replace it with 'NKA'
+
+UPDATE patients
+SET allergies='NKA'
+WHERE allergies IS NULL;
+
+-Show first name and last name concatinated 
+into one column to show their full name.
+
+SELECT CONCAT(first_name, ' ', last_name)
+ AS fullname FROM patients;
+
+-Show first name, last name, and the full
+ province name of each patient.
+Example: 'Ontario' instead of 'ON'
+
+select patients.first_name,
+patients.last_name,
+province_names.province_name
+from patients 
+join province_names
+ON
+patients.province_id=province_names.province_id
+
+
+-Show how many patients have a birth_date
+ with 2010 as the birth year.
+
+select Count(birth_date Or * we can use) AS total_patients
+from patients
+where Year(birth_date)=2010;
+
+-Show the first_name, last_name, and height
+ of the patient with the greatest height.
+select first_name,last_name,max(height) AS height
+From patients;
+
+-Show all columns for patients who have one of the following patient_ids:
+1,45,534,879,1000
+select * from patients 
+Where patient_id In (1,45,534,879,1000);
+
+-Show the total number of admissions
+select count(admission_date) AS total_admissions
+from admissions;
+
+-Show all the columns from admissions where 
+the patient was admitted and discharged on 
+the same day.
+
+select * from admissions
+Where admission_date=discharge_date;
+
+-Show the patient id and the total number
+ of admissions for patient_id 579.
+
+select patient_id,
+count(*) AS total_admissions
+from admissions
+where patient_id=579;
+
+-Based on the cities that our patients live 
+in, show unique cities that are in province_id 'NS'?
+
+SELECT DISTINCT city  as unique_cities
+FROM patients
+WHERE province_id='NS';
+
+-Write a query to find the first_name, 
+last name and birth date of patients who 
+have height more than 160 and weight more 
+than 70
+
+select first_name,last_name,birth_date from patients
+where height>160 and weight>70; 
+
+-Write a query to find list of patients
+ first_name, last_name, and allergies from 
+Hamilton where allergies are not null
+
+select first_name,last_name,allergies
+from patients
+where 
+city is 'Hamilton'
+AND allergies IS NOT NUll;
+
+-Based on cities where our patient lives in,
+ write a query to display the list of unique
+ city starting with a vowel (a, e, i, o, u).
+Show the result order in ascending by city.
+
+select distinct city
+from patients
+where
+  city like 'a%'
+  or city like 'e%'
+  or city like 'i%'
+  or city like 'o%'
+  or city like 'u%'
+order by city
+
+
+-Show unique birth years from patients and order them by ascendin
+
+select distinct year(birth_date) AS birth_year
+from patients
+order by birth_date ASC;
+
+-Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+
+Primary diagnosis is stored in the admissions table.
+
+select 
+patients.patient_id,first_name,
+last_name
+from patients
+join admissions ON admissions.patient_id=patients.patient_id
+where diagnosis is 'Dementia';
+
+
+-Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+
+
+SELECT city,
+COUNT(*) AS num_patients 
+FROM patients
+group by city
+ORDER BY num_patients DESC,city ASC;
+
+
+-Show first name, last name and role of every person that is
+either patient or doctor.The roles are either "Patient" or "Doctor"
+
+
+SELECT first_name,last_name,'patient' AS role FROM patients
+    UNION ALL
+SELECT first_name,last_name,'Doctor' FROM doctors;
+    
+-Show all allergies ordered by popularity. 
+Remove NULL values from query
+
+
+select allergies, count(*) AS total_diagnosis
+from patients
+group by allergies 
+having allergies is not null
+order by total_diagnosis desc;
+
+SELECT
+  allergies,
+  COUNT(*) AS total_diagnosis
+FROM patients
+WHERE
+  allergies IS NOT NULL
+GROUP BY allergies
+ORDER BY total_diagnosis DESC
+
+
+-Show all patient's first_name, last_name,
+ and birth_date who were born in the 1970s 
+decade. Sort the list starting from the earliest birth_date.
+
+select first_name,last_name,birth_date 
+from patients
+where year(birth_date) between 1970  
+and 1979
+order by birth_date asc;
+
+-We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order
+EX: SMITH,jane
+
+
+SELECT
+CONCAT(UPPER(last_name),' ,',Lower(first_name)) AS  new_name_format
+FROM patients
+order by first_name desc;
+
+-Show the province_id(s), sum of height;
+ where the total sum of its patient's height is greater than or equal to 7,000.
+
+
+select province_id,
+sum(height) AS sum_height 
+from patients
+group by province_id
+having sum_height >= 7000; 
+
+
+-Show the difference between the largest 
+weight and smallest weight for patients with
+ the last name 'Maroni'
+
+SELECT MAX(weight) - MIN(weight) AS weight_delta 
+FROM patients WHERE last_name = 'Maroni';
+
+
+-Show all of the days of the month (1-31) and 
+how many admission_dates occurred on that day
+. Sort by the day with most admissions to least admissions.
+
+
+select 
+day(admission_date) as day_number,
+count(*) as number_of_admissions
+from admissions
+group by day_number
+order by  number_of_admissions desc;
+
+
+-Show all columns for patient_id 542's 
+most recent admission_date.
+
+select * 
+from admissions 
+where patient_id=542
+group by patient_id
+having
+admission_date = max(admission_date);
+
+
+-Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+
+
+
+select 
+patient_id,attending_doctor_id,diagnosis
+from admissions
+where 
+(
+  attending_doctor_id In (1,5,19)
+  and
+  patient_id % 2 != 0
+  )
+  or 
+  (
+    attending_doctor_id like '%2%'
+    And len(patient_id)= 3
+  )
+
+-Show first_name, last_name, and the total number of admissions attended for each doctor.
+
+Every admission has been attended by a doctor.
+
+
+
+SELECT
+  first_name,
+  last_name,
+  count(*) as admissions_total
+from admissions 
+  join doctors on doctors.doctor_id = admissions.attending_doctor_id
+group by attending_doctor_id
+
+
+-For each doctor, display their id, full name, 
+and the first and last admission date they attended.
+
+
+--------------------------------------------------
+
+sql interview qtns:
+--------------------
+
+
+The Basics:
+1. LEFT, RIGHT, INNER, OUTER, ANTI, FULL, SELF JOINs
+2. WHERE vs. HAVING
+3. GROUP BY vs. ORDER BY
+4. UNION vs. UNION ALL
+5. CTEs vs. Subqueries
+6. Window functions
+7. Rank vs. Dense Rank vs. Row Number
+8. Primary Keys vs. Foreign Keys
+9. CASE
+10. Null handling (COALESCE and others)
+
+Conceptual Questions: 
+1. Pull all entries in Table A that are not in Table B.
+2. Describe a scenario requiring a self join.
+3. Rank all X by Y, partition by Z.
+4. Select the top customer by X.
+5. Which join returns the most and least observations (left/right, inner, full)?
+6. Code Refactoring
+7. How to optimize queries
+8. What is the distribution of X?
+9. Aggregate by date
+10. Identify duplicates
+
